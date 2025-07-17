@@ -1,1 +1,7 @@
-export class CreateTaskDto {}
+export class CreateTaskDto {
+  title: string;
+  description: string;
+  dueDate: Date;
+  priority: 'low' | 'medium' | 'high';
+  status: 'pending' | 'in-progress' | 'completed';
+}
