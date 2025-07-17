@@ -1,9 +1,9 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
-import { Task, TaskDocument } from './entities/task.entity';
+import { Injectable, Logger } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { CreateTaskDto } from "./dto/create-task.dto";
+import { UpdateTaskDto } from "./dto/update-task.dto";
+import { Task, TaskDocument } from "./entities/task.entity";
 
 @Injectable()
 export class TaskRepository {
@@ -25,7 +25,9 @@ export class TaskRepository {
   }
 
   async update(id: string, updateTaskDto: UpdateTaskDto): Promise<Task | null> {
-    return this.taskModel.findByIdAndUpdate(id, updateTaskDto, { new: true }).exec();
+    return this.taskModel
+      .findByIdAndUpdate(id, updateTaskDto, { new: true })
+      .exec();
   }
 
   async remove(id: string): Promise<Task | null> {

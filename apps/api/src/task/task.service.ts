@@ -1,8 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
-import { TaskRepository } from './task.repository';
-import { Task } from './entities/task.entity';
+import { Injectable, Logger } from "@nestjs/common";
+import { CreateTaskDto } from "./dto/create-task.dto";
+import { UpdateTaskDto } from "./dto/update-task.dto";
+import { Task } from "./entities/task.entity";
+import { TaskRepository } from "./task.repository";
 
 @Injectable()
 export class TaskService {
@@ -16,7 +16,7 @@ export class TaskService {
   }
 
   async findAll(): Promise<Task[]> {
-    this.logger.log('Finding all tasks');
+    this.logger.log("Finding all tasks");
     return this.taskRepository.findAll();
   }
 

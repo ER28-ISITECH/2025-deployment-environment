@@ -1,26 +1,26 @@
-import axios from 'axios';
-import type {CreateTaskRequest, UpdateTaskRequest} from "../types/task.ts";
+import axios from "axios";
+import type { CreateTaskRequest, UpdateTaskRequest } from "../types/task.ts";
 
 const api = axios.create({
-  baseURL: 'http://localhost:3001/api/tasks',
+  baseURL: "http://localhost:3001/api/tasks",
 });
 
 export const getTodos = async () => {
-  const response = await api.get('');
+  const response = await api.get("");
   return response.data;
 };
 
 export const createTodo = async (todo: CreateTaskRequest) => {
-  const response = await api.post('', todo);
+  const response = await api.post("", todo);
   return response.data;
 };
 
 export const updateTodo = async ({
   id,
-  task
+  task,
 }: {
   id: string;
-  task: UpdateTaskRequest
+  task: UpdateTaskRequest;
 }) => {
   const response = await api.patch(`/${id}`, task);
   return response.data;

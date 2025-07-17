@@ -1,5 +1,11 @@
-import { render } from 'preact'
-import { App } from './app.tsx'
-import './styles.css'
+import { render } from "preact";
+import { App } from "./app.tsx";
+import "./styles.css";
 
-render(<App />, document.getElementById('app')!)
+const element = document.getElementById("app");
+
+if (!element) {
+  throw new Error("Root element not found");
+}
+
+render(<App />, element);
