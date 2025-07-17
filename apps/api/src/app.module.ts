@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import {ConfigModule, ConfigService} from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import {ThrottlerModule} from "@nestjs/throttler";
+import {TaskModule} from "./task/task.module";
 
 @Module({
   imports: [
@@ -32,7 +33,7 @@ import {ThrottlerModule} from "@nestjs/throttler";
         })
       }
     ),
-
+    TaskModule
   ],
   controllers: [],
   providers: [],
