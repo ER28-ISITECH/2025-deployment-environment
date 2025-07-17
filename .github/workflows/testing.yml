@@ -1,4 +1,4 @@
-name: Code quality
+name: Testing
 
 on:
   push:
@@ -18,9 +18,5 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-        with:
-          version: latest
-      - name: Run Biome
-        run: pnpm lint
+      - name: Run Tests
+        run: pnpm test

@@ -6,6 +6,10 @@ export type TaskDocument = Task & Document;
 
 @Schema({ timestamps: true, versionKey: false })
 export class Task {
+  _id: string;
+  createdAt: Date;
+  updatedAt: Date;
+
   @ApiProperty({
     example: "Complete project documentation",
     description: "The title of the task",
