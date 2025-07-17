@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   HttpException,
   HttpStatus,
   Param,
@@ -63,15 +64,23 @@ export class TaskController {
   })
   @ApiResponse({ status: 404, description: "Task not found" })
   async findOne(@Param("id") id: string): Promise<Task> {
+    if (!id) {
+      throw new HttpException("Task ID is required", HttpStatus.BAD_REQUEST);
+    }
+
+    let task: Task | null;
+
     try {
-      const task = await this.taskService.findOne(id);
-      if (!task) {
-        throw new HttpException("Task not found", HttpStatus.NOT_FOUND);
-      }
-      return task;
+      task = await this.taskService.findOne(id);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    if (!task) {
+      throw new HttpException("Task not found", HttpStatus.NOT_FOUND);
+    }
+
+    return task;
   }
 
   @Patch(":id")
@@ -86,18 +95,27 @@ export class TaskController {
     @Param("id") id: string,
     @Body() updateTaskDto: UpdateTaskDto,
   ): Promise<Task> {
+    if (!id) {
+      throw new HttpException("Task ID is required", HttpStatus.BAD_REQUEST);
+    }
+
+    let task: Task | null;
+
     try {
-      const task = await this.taskService.update(id, updateTaskDto);
-      if (!task) {
-        throw new HttpException("Task not found", HttpStatus.NOT_FOUND);
-      }
-      return task;
+      task = await this.taskService.update(id, updateTaskDto);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    if (!task) {
+      throw new HttpException("Task not found", HttpStatus.NOT_FOUND);
+    }
+
+    return task;
   }
 
   @Delete(":id")
+  @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: "Delete a task by ID" })
   @ApiResponse({
     status: 204,
@@ -105,13 +123,20 @@ export class TaskController {
   })
   @ApiResponse({ status: 404, description: "Task not found" })
   async remove(@Param("id") id: string): Promise<void> {
+    if (!id) {
+      throw new HttpException("Task ID is required", HttpStatus.BAD_REQUEST);
+    }
+
+    let task: Task | null;
+
     try {
-      const task = await this.taskService.remove(id);
-      if (!task) {
-        throw new HttpException("Task not found", HttpStatus.NOT_FOUND);
-      }
+      task = await this.taskService.remove(id);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    if (!task) {
+      throw new HttpException("Task not found", HttpStatus.NOT_FOUND);
     }
   }
 }
