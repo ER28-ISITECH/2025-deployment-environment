@@ -17,6 +17,30 @@
     "lint:fix": {
       "dependsOn": ["^lint:fix"]
     },
+    "test": {
+      "dependsOn": ["^test"],
+      "inputs": [
+        ".env*",
+        "src/**",
+        "test/**"
+      ],
+      "outputs": [
+        "coverage/**",
+        "!coverage/lcov-report/**"
+      ]
+    },
+    "test:e2e": {
+      "dependsOn": ["^test:e2e"],
+      "inputs": [
+        ".env*",
+        "src/**",
+        "test/**"
+      ],
+      "outputs": [
+        "coverage/**",
+        "!coverage/lcov-report/**"
+      ]
+    },
     "check-types": {
       "dependsOn": ["^check-types"]
     },
