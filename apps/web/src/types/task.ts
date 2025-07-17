@@ -1,7 +1,7 @@
 export interface Task {
   "title": string;
   "description": string;
-  "dueDate": Date;
+  "dueDate": string;
   "priority": "low" | "medium" | "high";
   "status": "pending" | "in-progress" | "completed";
   createdAt: Date;
@@ -12,7 +12,7 @@ export interface Task {
 export interface CreateTaskRequest {
   "title": string;
   "description": string;
-  "dueDate": Date;
+  "dueDate": string;
   "priority": "low" | "medium" | "high";
   "status": "pending" | "in-progress" | "completed";
 }
