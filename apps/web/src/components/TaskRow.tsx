@@ -1,24 +1,25 @@
-import type { Task } from "../types/task.ts";
 import {
   Box,
+  Button,
   Checkbox,
+  Collapsible,
   createListCollection,
+  Flex,
+  Input,
   Portal,
   Select,
-  Button,
-  Input,
   Textarea,
-  Flex,
-  Collapsible, useDisclosure,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "preact/hooks";
 import { useTasks } from "../hooks/useTasks.ts";
+import type { Task } from "../types/task.ts";
 
 export const TaskRow = ({
-                          task,
-                          handleSelect,
-                          isSelected,
-                        }: {
+  task,
+  handleSelect,
+  isSelected,
+}: {
   task: Task;
   handleSelect: () => void;
   isSelected: boolean;
@@ -69,11 +70,7 @@ export const TaskRow = ({
       cursor="pointer"
       _hover={{ backgroundColor: "gray.100" }}
     >
-      <Flex
-        width="100%"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Flex width="100%" justifyContent="space-between" alignItems="center">
         <Box>
           <Checkbox.Root
             onCheckedChange={() => handleSelect()}
@@ -144,25 +141,14 @@ export const TaskRow = ({
           </Select.Root>
         </Box>
         <Box>
-          <Button
-            onClick={onToggle}
-            colorScheme="blue"
-            size="sm"
-            ml={2}
-          >
+          <Button onClick={onToggle} colorScheme="blue" size="sm" ml={2}>
             {open ? "Close" : "Show Details"}
           </Button>
         </Box>
       </Flex>
       <Collapsible.Root open={open} onOpenChange={onToggle} width="100%">
         <Collapsible.Content>
-          <Box
-            p={4}
-            display="flex"
-            flexDirection="column"
-            gap={4}
-            width="100%"
-          >
+          <Box p={4} display="flex" flexDirection="column" gap={4} width="100%">
             <Input
               name="title"
               value={editTask.title}

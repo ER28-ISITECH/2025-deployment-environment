@@ -1,9 +1,9 @@
-import { Box, Heading, Stack } from '@chakra-ui/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { AddTaskModal } from './components/AddTaskModal.tsx';
-import { TaskList } from './components/TaskList.tsx';
-import { useTasks } from './hooks/useTasks.ts';
-import {Provider} from "./components/ui/provider.tsx";
+import { Box, Heading, Stack } from "@chakra-ui/react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { AddTaskModal } from "./components/AddTaskModal.tsx";
+import { TaskList } from "./components/TaskList.tsx";
+import { Provider } from "./components/ui/provider.tsx";
+import { useTasks } from "./hooks/useTasks.ts";
 
 const queryClient = new QueryClient();
 
@@ -15,9 +15,7 @@ const AppContent = () => {
   }
 
   if (todos.error) {
-    return <Box>
-      Unable to load tasks. Please try again later.
-    </Box>;
+    return <Box>Unable to load tasks. Please try again later.</Box>;
   }
 
   return (
@@ -42,4 +40,3 @@ export const App = () => {
     </Provider>
   );
 };
-
