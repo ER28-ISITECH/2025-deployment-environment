@@ -1,6 +1,10 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
+  "globalDependencies": [".env*"],
+  "globalEnv": [
+    "DATABASE_URL"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -14,6 +18,13 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
+      "inputs": [
+        ".env*"
+      ],
+      "env": [
+        "PORT",
+        "DATABASE_URL"
+      ],
       "cache": false,
       "persistent": true
     }
