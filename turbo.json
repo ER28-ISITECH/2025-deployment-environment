@@ -3,7 +3,7 @@
   "ui": "tui",
   "globalDependencies": [".env*"],
   "globalEnv": [
-    "DATABASE_URL"
+    "MONGODB_URI"
   ],
   "tasks": {
     "build": {
@@ -23,7 +23,7 @@
       ],
       "env": [
         "PORT",
-        "DATABASE_URL"
+        "MONGODB_URI"
       ],
       "cache": false,
       "persistent": true
